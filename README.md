@@ -1,16 +1,16 @@
-# AI-Realsense
+# AI-RealSense
 
-Welcome to the AI-Realsense GitHub repository! This project features a ROS2 package, developed in Python, designed to integrate AI with the Intel Realsense Camera. Below, you'll find detailed information about each Python file within the `camera_pkg`.
+Welcome to the AI-RealSense GitHub repository! This project features a ROS2 package, developed in Python, designed to integrate AI with the Intel RealSense Camera. Below, you'll find detailed information about each Python file within the `camera_pkg`.
 
 ## LLM Request
 
-The **llm_request** file extracts user input data and publishes it to the appropriate topics using the **Llama3-Instruct** model. We utilize the 8 billion parameter version of this model, which has been quantized to 4 bits. This file processes prompts from the command-line interface to identify the object and its location. These requests are published as strings to the `/obj_req` and `/room_req` topics, respectively.
+The **llm_request** file extracts user input data and publishes it to the appropriate topics using the **Llama3-Instruct** model. We utilise the 8 billion parameter version of this model, which has been quantised to 4 bits. This file processes prompts from the command-line interface to identify the object and its location. These requests are published as strings to the `/obj_req` and `/room_req` topics, respectively.
 
 **Ensure that you complete the HuggingFace CLI login with your API key after accessing the [Model](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) via Meta to run this file!**
 
 ## Intel Publisher
 
-The **intelpub** file manages access to the Intel Realsense Camera feed, publishing RGB frames to the `/rgb_camera` topic every 2 seconds for the VLM's use. It also subscribes to the `/depth_req` topic, which contains float array coordinates for the pixel at the center of a detected object. The file calculates the depth of this pixel using the camera's depth frame and publishes this distance to the `/obj_dist` topic, representing the space between the Intel Realsense Camera and the detected object.
+The **intelpub** file manages access to the Intel RealSense Camera feed, publishing RGB frames to the `/rgb_camera` topic every 2 seconds for the VLM's use. It also subscribes to the `/depth_req` topic, which contains float array coordinates for the pixel at the center of a detected object. The file calculates the depth of this pixel using the camera's depth frame and publishes this distance to the `/obj_dist` topic, representing the space between the Intel RealSense Camera and the detected object.
 
 ## Intel Subscriber (With Bounding Box)
 
